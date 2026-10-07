@@ -1,0 +1,20 @@
+{
+  "name": "rishiraj-sarkar-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check:ui": "node scripts/inspect.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.6",
+    "@fontsource/ibm-plex-mono": "^5.2.6",
+    "astro": "^7.3.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "playwright-core": "^1.64.0"
+  }
+}

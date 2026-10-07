@@ -1,0 +1,58 @@
+---
+interface Props {
+  kind: 'malware' | 'light' | 'lab' | 'lineage'
+}
+
+const { kind } = Astro.props
+---
+
+<div class={`project-visual project-visual--${kind}`} aria-hidden="true">
+  {kind === 'malware' && (
+    <div class="visual-inner malware-visual">
+      <div class="visual-top"><span>BEHAVIOR TRACE</span><span>MODEL COMPARISON</span></div>
+      <div class="trace-lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="trace-flow"><span>EXE</span><b></b><span>FEATURES</span><b></b><span>CLASSIFIER</span></div>
+      <div class="visual-corner">01 / DETECT</div>
+    </div>
+  )}
+  {kind === 'light' && (
+    <div class="visual-inner light-visual">
+      <div class="visual-top"><span>SECURE CHANNEL</span><span>SENSOR + LIGHT</span></div>
+      <svg viewBox="0 0 460 200" preserveAspectRatio="xMidYMid meet">
+        <defs><linearGradient id="light-line"><stop stop-color="currentColor" stop-opacity="0.1"/><stop offset="0.5" stop-color="currentColor"/><stop offset="1" stop-color="currentColor" stop-opacity="0.1"/></linearGradient></defs>
+        <path class="light-beam" d="M86 124 C160 35 300 35 374 124" fill="none" stroke="url(#light-line)" stroke-width="2" stroke-dasharray="6 7"/>
+        <path d="M66 133h75l-14-21H80zM319 133h75l-14-21h-47z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="103" cy="136" r="8" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="357" cy="136" r="8" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="230" cy="60" r="5" fill="currentColor"/>
+        <path d="M93 101v-11m10 11V75m10 26V87m234 14V77m10 24V91m10 10V80" stroke="currentColor" stroke-width="2" opacity=".55"/>
+      </svg>
+      <div class="visual-corner">02 / TRANSMIT</div>
+    </div>
+  )}
+  {kind === 'lab' && (
+    <div class="visual-inner lab-visual">
+      <div class="visual-top"><span>HOMELAB</span><span>OBSERVE THE SIGNAL</span></div>
+      <div class="lab-grid"><span>NETWORK</span><span>LOGS</span><span>SIEM</span><span>TRIAGE</span></div>
+      <div class="lab-path"><i></i><i></i><i></i></div>
+      <div class="visual-corner">03 / DEFEND</div>
+    </div>
+  )}
+  {kind === 'lineage' && (
+    <div class="visual-inner lineage-visual">
+      <div class="visual-top"><span>TRAINING PROVENANCE</span><span>EXPLORATION</span></div>
+      <svg viewBox="0 0 460 190" preserveAspectRatio="xMidYMid meet">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" opacity=".62">
+          <path d="M60 45h85l36 42h81l48 45h90"/>
+          <path d="M60 145h85l36-58"/>
+          <path d="M60 95h92l29-8"/>
+          <path d="M260 87l50-42h90"/>
+        </g>
+        <g fill="var(--surface)"><circle cx="60" cy="45" r="10"/><circle cx="60" cy="95" r="10"/><circle cx="60" cy="145" r="10"/><circle cx="181" cy="87" r="12"/><circle cx="260" cy="87" r="12"/><circle cx="310" cy="45" r="9"/><circle cx="310" cy="132" r="9"/><circle cx="400" cy="45" r="9"/><circle cx="400" cy="132" r="9"/></g>
+        <g fill="none" stroke="currentColor" stroke-width="2"><circle cx="60" cy="45" r="10"/><circle cx="60" cy="95" r="10"/><circle cx="60" cy="145" r="10"/><circle cx="181" cy="87" r="12"/><circle cx="260" cy="87" r="12"/><circle cx="310" cy="45" r="9"/><circle cx="310" cy="132" r="9"/><circle cx="400" cy="45" r="9"/><circle cx="400" cy="132" r="9"/></g>
+        <circle cx="60" cy="95" r="4" fill="currentColor"/><circle cx="260" cy="87" r="5" fill="currentColor"/><circle cx="400" cy="132" r="4" fill="currentColor"/>
+      </svg>
+      <div class="visual-corner">04 / TRACE</div>
+    </div>
+  )}
+</div>

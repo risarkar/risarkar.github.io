@@ -1,0 +1,173 @@
+---
+import '@fontsource-variable/inter/wght.css'
+import '@fontsource/ibm-plex-mono/400.css'
+import '@fontsource/ibm-plex-mono/500.css'
+import '@fontsource/ibm-plex-mono/600.css'
+import '../styles/global.css'
+import ProjectVisual from '../components/ProjectVisual.astro'
+import { certifications, community, education, evidenceForSkill, experience, projects, siteContent, skillName, skills, validatePortfolio } from '../data/portfolio'
+
+const siteUrl = 'https://risarkar.github.io/'
+validatePortfolio()
+---
+
+<!doctype html>
+<html lang="en" data-theme="phosphor">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#101614" />
+    <meta name="description" content="Rishiraj Sarkar works across AI security, malware detection, secure systems, and privacy. Explore his skills, experience, and projects." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Rishiraj Sarkar | AI Security and Cybersecurity" />
+    <meta property="og:description" content="Your system. I Secure it. Simple! Explore the skills, experience, and projects behind my work." />
+    <meta property="og:url" content={siteUrl} />
+    <link rel="canonical" href={siteUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Rishiraj Sarkar | AI Security and Cybersecurity</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="site-header" id="top">
+        <div class="header-inner wrap">
+          <a class="brand" href="#top" aria-label="Rishiraj Sarkar, back to top"><span class="brand-mark">R<span>/</span>S</span><span class="brand-name">Rishiraj Sarkar</span></a>
+          <nav class="desktop-nav" aria-label="Main navigation">
+            <a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a>
+          </nav>
+          <div class="header-actions">
+            <details class="theme-picker">
+              <summary aria-label="Choose a color theme"><span class="theme-indicator"></span><span class="theme-label">Theme</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></summary>
+              <div class="theme-list" role="group" aria-label="Color themes">
+                <button type="button" data-set-theme="signal" aria-pressed="false"><i class="swatch swatch-signal"></i>Cinematic red</button>
+                <button type="button" data-set-theme="paper" aria-pressed="false"><i class="swatch swatch-paper"></i>Warm paper</button>
+                <button type="button" data-set-theme="phosphor" aria-pressed="true"><i class="swatch swatch-phosphor"></i>Wargames green</button>
+              </div>
+            </details>
+            <button class="header-command" type="button" data-open-palette aria-label="Open actions">Actions</button>
+            <details class="mobile-menu">
+              <summary aria-label="Open navigation menu"><span>Menu</span><span class="menu-bars" aria-hidden="true"><i></i><i></i></span></summary>
+              <nav aria-label="Mobile navigation">
+                <a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a>
+                <button type="button" data-open-palette>Actions</button>
+                <a href="#terminal">Terminal</a>
+              </nav>
+            </details>
+          </div>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="hero wrap" aria-labelledby="hero-title">
+          <div class="hero-content">
+            <h1 id="hero-title"><span>{siteContent.heroTitle.first}</span><em>{siteContent.heroTitle.focus}</em><span>{siteContent.heroTitle.last}</span></h1>
+            <div class="hero-terminal" id="terminal" aria-labelledby="terminal-title">
+              <div class="terminal-head"><div class="terminal-lights" aria-hidden="true"><i></i><i></i><i></i></div><h2 id="terminal-title">Rishiraj's terminal</h2><span class="terminal-head-note">interactive / public access</span></div>
+              <div class="terminal-output" id="terminal-output" role="log" aria-live="polite" aria-label="Terminal output"><p class="terminal-command-line">$ whoami</p><p>Rishiraj Sarkar. I work across AI security, secure systems, and privacy.</p><p>Type <strong>help</strong> or choose a command below.</p></div>
+              <form class="terminal-form" id="terminal-form"><label for="terminal-input"><span aria-hidden="true">rishiraj@portfolio:~$</span><span class="sr-only">Enter a portfolio command</span></label><input id="terminal-input" type="text" placeholder="Type a command" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" /></form>
+              <div class="terminal-suggestions"><span>Try:</span><button type="button" data-terminal-command="help">help</button><button type="button" data-terminal-command="work">work</button><button type="button" data-terminal-command="theme green">theme green</button></div>
+            </div>
+            <p class="hero-lead">{siteContent.heroLead}</p>
+            <p class="availability"><span class="availability-dot"></span>{siteContent.availability}</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#projects">View selected projects <span aria-hidden="true">↘</span></a>
+              <a class="button button-secondary" href="/Rishiraj-Sarkar-Resume.pdf" download>Download résumé <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="hero-small-actions"><a href="#skills">Explore my skills</a><span aria-hidden="true">/</span><a href={`mailto:${siteContent.email}`}>Send an email</a></div>
+          </div>
+          <div class="hero-proof" aria-label="Career highlights">
+            <div><span>01 / STUDY</span><strong>M.S. Cybersecurity</strong><small>University of Michigan-Dearborn</small></div>
+            <div><span>02 / PRACTICE</span><strong>Deloitte USI</strong><small>Privacy and safeguards</small></div>
+            <div><span>03 / RESEARCH</span><strong>TAI Lab</strong><small>Secure connected systems</small></div>
+          </div>
+        </section>
+
+        <section class="section section-skills" id="skills" aria-labelledby="skills-title">
+          <div class="wrap">
+            <div class="section-heading"><div><p class="section-kicker">01 / CAPABILITIES</p><h2 id="skills-title">Skills with receipts.</h2></div><p class="section-intro">Open any example below a skill to see where I put it to work.</p></div>
+            <div class="skills-grid">
+              {skills.map((skill, index) => (
+                <article class="skill-card" id={`skill-${skill.id}`}>
+                  <div class="skill-card-top"><span>{String(index + 1).padStart(2, '0')} / {skill.category}</span><span class="skill-cross" aria-hidden="true">✳</span></div>
+                  <h3>{skill.title}</h3>
+                  <p>{skill.description}</p>
+                  {evidenceForSkill(skill.id).length > 0 && <div class="skill-evidence">
+                    <span class="skill-evidence-title">See it in</span>
+                    <ul>{evidenceForSkill(skill.id).map((item) => <li><a href={item.href}><strong>{item.label}</strong><span>{item.source}</span><span aria-hidden="true">↗</span></a></li>)}</ul>
+                  </div>}
+                </article>
+              ))}
+            </div>
+            <div class="certification-block" id="certifications">
+              <div class="certification-heading"><p class="section-kicker">VERIFIED LEARNING</p><h3>Certifications</h3><p>Each credential links to its public verification page.</p></div>
+              <div class="certification-list">
+                {certifications.map((cert) => (
+                  <article class="cert-card" id={cert.id}>
+                    <div class="cert-icon" aria-hidden="true">✓</div>
+                    <div><span class="card-meta">{cert.issuer}</span><h4>{cert.name}</h4><span class="tag-label">Skills covered</span><div class="skill-tags">{cert.skills.map((id) => <a href={`#skill-${id}`}>{skillName[id]}</a>)}</div></div>
+                    <a class="cert-verify" href={cert.url} target="_blank" rel="noopener noreferrer">Verify credential <span aria-hidden="true">↗</span><span class="sr-only"> Opens in a new tab.</span></a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-experience" id="experience" aria-labelledby="experience-title">
+          <div class="wrap">
+            <div class="section-heading"><div><p class="section-kicker">02 / EXPERIENCE</p><h2 id="experience-title">Where the work got real.</h2></div><p class="section-intro">Research, engineering, and privacy work gave me different ways to examine risk and build a response.</p></div>
+            <div class="experience-list">
+              {experience.map((item, index) => (
+                <article class="experience-card" id={item.id}>
+                  <div class="experience-index">0{index + 1}</div>
+                  <div class="experience-main"><div class="experience-overline"><span>{item.period}</span><span>{item.place}</span></div><h3>{item.role}</h3><p class="experience-organization">{item.organization}</p><p class="experience-summary">{item.summary}</p><ul>{item.details.map((detail) => <li>{detail}</li>)}</ul><span class="tag-label">Skills used</span><div class="skill-tags">{item.skills.map((id) => <a href={`#skill-${id}`}>{skillName[id]}</a>)}</div></div>
+                  <span class="experience-arrow" aria-hidden="true">↗</span>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-projects" id="projects" aria-labelledby="projects-title">
+          <div class="wrap">
+            <div class="section-heading"><div><p class="section-kicker">03 / SELECTED WORK</p><h2 id="projects-title">Proof lives in the details.</h2></div><p class="section-intro">These projects connect the models, systems, and decisions behind my AI security work.</p></div>
+            <div class="projects-list">
+              {projects.map((project, index) => (
+                <article class="project-card" id={project.id}>
+                  <div class="project-copy"><div class="project-overline"><span>{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span><span>{project.eyebrow}</span></div><h3>{project.title}</h3><p class="project-summary">{project.summary}</p><dl><div><dt>My contribution</dt><dd>{project.contribution}</dd></div><div><dt>What came out of it</dt><dd>{project.outcome}</dd></div></dl><span class="tag-label">Skills used</span><div class="skill-tags">{project.skills.map((id) => <a href={`#skill-${id}`}>{skillName[id]}</a>)}</div>{project.credit && <p class="project-credit">{project.credit}</p>}<div class="project-links">{project.links.map((link) => <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} <span aria-hidden="true">↗</span><span class="sr-only"> Opens in a new tab.</span></a>)}</div></div>
+                  <ProjectVisual kind={project.visual ?? 'lab'} />
+                </article>
+              ))}
+            </div>
+            <p class="projects-note">More work from my bachelor’s degree will join this collection later.</p>
+          </div>
+        </section>
+
+        <section class="section section-about" id="about" aria-labelledby="about-title">
+          <div class="wrap">
+            <div class="section-heading"><div><p class="section-kicker">04 / BEYOND THE LAB</p><h2 id="about-title">Curiosity travels well.</h2></div><p class="section-intro">My work is technical, but I also care about helping people find a way into it.</p></div>
+            <div class="about-grid">
+              <div class="about-panel"><div class="panel-icon" aria-hidden="true">01</div><h3>Education</h3>{education.map((item) => <div class="education-item"><span>{item.period}</span><h4>{item.degree}</h4><p>{item.school}. {item.detail}</p></div>)}</div>
+              <div class="about-panel about-panel-community"><div class="panel-icon" aria-hidden="true">02</div><h3>Community</h3><p class="community-role">{community.role}</p><p>{community.description}</p><div class="community-art" aria-hidden="true"><span>LEARN</span><i></i><span>BUILD</span><i></i><span>SHARE</span></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-contact" id="contact" aria-labelledby="contact-title">
+          <div class="wrap contact-wrap"><div><p class="section-kicker">05 / CONTACT</p><h2 id="contact-title">Let’s build something<br /><em>worth defending.</em></h2><p>{siteContent.contactIntro}</p><a class="contact-email" href={`mailto:${siteContent.email}`}>{siteContent.email} <span aria-hidden="true">↗</span></a></div><div class="contact-links"><a href={siteContent.linkedIn} target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> Opens in a new tab.</span></a><a href={siteContent.github} target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span class="sr-only"> Opens in a new tab.</span></a><a href="/Rishiraj-Sarkar-Resume.pdf" download>Download résumé <span aria-hidden="true">↓</span></a><a href="#terminal">Use the terminal <span aria-hidden="true">↗</span></a></div></div>
+        </section>
+      </main>
+
+      <footer class="site-footer"><div class="wrap"><span>© 2026 Rishiraj Sarkar</span><span>Built with care and curiosity.</span><a href="#top">Back to top ↑</a></div></footer>
+    </div>
+
+    <dialog class="command-dialog" id="command-dialog" aria-labelledby="command-title">
+      <div class="dialog-head"><div><span class="dialog-overline">QUICK ACCESS</span><h2 id="command-title">Find your way around.</h2></div><button type="button" class="dialog-close" data-close-dialog aria-label="Close command palette">×</button></div>
+      <label class="command-search"><span class="sr-only">Search commands</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><input id="command-search" type="search" placeholder="Search pages and actions" autocomplete="off" /></label>
+      <div class="command-results" id="command-results" aria-live="polite"></div>
+      <div class="dialog-foot"><span>Use ↑ and ↓ to move</span><span>Press Esc to close</span></div>
+    </dialog>
+
+    <script>import '../scripts/site'</script>
+  </body>
+</html>
